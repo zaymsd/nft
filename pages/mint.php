@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mint NFT Anda - NFT-VERSE</title>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    
-    <style>
+<?php
+$path = '../';
+$page_title = 'Mint NFT Anda - NFT-VERSE';
+$active_tab = 'mint';
+$extra_css = '    <style>
         /* Mint Page Specific Styles */
         .mint-page {
             min-height: 100vh;
@@ -158,7 +140,7 @@
             font-size: 2rem;
             font-weight: 900;
             color: var(--primary-color);
-            font-family: 'Orbitron', sans-serif;
+            font-family: \'Orbitron\', sans-serif;
         }
         
         .progress-bar-container {
@@ -223,7 +205,7 @@
         .wallet-address {
             font-size: 0.9rem;
             color: var(--text-secondary);
-            font-family: 'Courier New', monospace;
+            font-family: \'Courier New\', monospace;
         }
         
         /* Mint Controls */
@@ -271,7 +253,7 @@
             color: var(--primary-color);
             min-width: 100px;
             text-align: center;
-            font-family: 'Orbitron', sans-serif;
+            font-family: \'Orbitron\', sans-serif;
         }
         
         .price-info {
@@ -394,432 +376,340 @@
                 padding: 2rem;
             }
         }
-    </style>
-</head>
-<body>
-    
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
-    
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="../index.php">
-                <i class="fas fa-gem me-2"></i>
-                <span class="brand-text">NFT-VERSE</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="roadmap.php">Peta Jalan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery.php">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="team.php">Tim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-mint active" href="mint.php">
-                            <i class="fas fa-fire me-1"></i> Mint Sekarang
-                        </a>
-                    </li>
-                </ul>
+    </style>';
+include '../includes/header.php';
+?>
+
+<!-- Mint Page -->
+<section class="mint-page">
+    <div class="container mint-container">
+
+        <!-- Page Header -->
+        <div class="page-header text-center mb-5" data-aos="fade-up">
+            <h1 class="gradient-text">Mint NFT Anda</h1>
+            <p class="section-subtitle">Amankan tempat Anda dalam revolusi NFT-Verse</p>
+        </div>
+
+        <!-- Mint Status Bar -->
+        <div class="mint-status" data-aos="fade-up" data-aos-delay="100">
+            <div class="status-label">NFT yang Sudah Di-Mint</div>
+            <div class="status-value">
+                <span id="mintedCount">7.842</span> / 10.000
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar" style="width: 78.42%"></div>
             </div>
         </div>
-    </nav>
 
-    <!-- Mint Page -->
-    <section class="mint-page">
-        <div class="container mint-container">
-            
-            <!-- Page Header -->
-            <div class="page-header text-center mb-5" data-aos="fade-up">
-                <h1 class="gradient-text">Mint NFT Anda</h1>
-                <p class="section-subtitle">Amankan tempat Anda dalam revolusi NFT-Verse</p>
-            </div>
-            
-            <!-- Mint Status Bar -->
-            <div class="mint-status" data-aos="fade-up" data-aos-delay="100">
-                <div class="status-label">NFT yang Sudah Di-Mint</div>
-                <div class="status-value">
-                    <span id="mintedCount">7.842</span> / 10.000
-                </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-fill" id="progressBar" style="width: 78.42%"></div>
-                </div>
-            </div>
-            
-            <!-- Main Mint Interface -->
-            <div class="mint-main">
-                
-                <!-- Preview Section -->
-                <div class="mint-preview" data-aos="fade-right" data-aos-delay="200">
-                    <div class="hero-visual">
-                        <div class="nft-showcase">
-                            <div class="nft-card-3d">
-                                <div class="nft-card-inner">
-                                    <img src="../assets/images/nft-1.png" alt="Featured NFT" class="nft-main-image" id="previewImage">
-                                    <div class="nft-glow"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preview-info">
-                        <h3 class="preview-title">Koleksi NFT Eksklusif</h3>
-                        <p class="preview-text">
-                            Setiap NFT memiliki karakteristik unik yang dihasilkan secara acak. NFT Anda akan 
-                            diungkapkan 48 jam setelah proses minting selesai. Tingkat kelangkaan meliputi: 
-                            Common (Umum), Rare (Langka), Epic (Epik), dan Legendary (Legendaris)!
-                        </p>
-                        <div class="mt-3">
-                            <div class="d-flex justify-content-around text-center">
-                                <div>
-                                    <div class="text-primary fw-bold fs-4">10.000</div>
-                                    <small class="text-muted">Total Koleksi</small>
-                                </div>
-                                <div>
-                                    <div class="text-primary fw-bold fs-4">150+</div>
-                                    <small class="text-muted">Trait Unik</small>
-                                </div>
-                                <div>
-                                    <div class="text-primary fw-bold fs-4">0.08 ETH</div>
-                                    <small class="text-muted">Harga Mint</small>
-                                </div>
+        <!-- Main Mint Interface -->
+        <div class="mint-main">
+
+            <!-- Preview Section -->
+            <div class="mint-preview" data-aos="fade-right" data-aos-delay="200">
+                <div class="hero-visual">
+                    <div class="nft-showcase">
+                        <div class="nft-card-3d">
+                            <div class="nft-card-inner">
+                                <img src="../assets/images/nft-1.png" alt="Featured NFT" class="nft-main-image"
+                                    id="previewImage">
+                                <div class="nft-glow"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Mint Interface -->
-                <div class="mint-interface" data-aos="fade-left" data-aos-delay="200">
-                    
-                    <!-- Wallet Connection -->
-                    <div class="wallet-section">
-                        <h3 class="section-title">
-                            <i class="fas fa-wallet me-2"></i> 1. Hubungkan Wallet
-                        </h3>
-                        <button class="wallet-btn" id="connectWalletBtn" onclick="connectWallet()">
-                            <span>
-                                <i class="fab fa-ethereum me-2"></i>
-                                <span id="walletStatus">Hubungkan MetaMask</span>
-                            </span>
-                            <i class="fas fa-chevron-right"></i>
+                <div class="preview-info">
+                    <h3 class="preview-title">Koleksi NFT Eksklusif</h3>
+                    <p class="preview-text">
+                        Setiap NFT memiliki karakteristik unik yang dihasilkan secara acak. NFT Anda akan
+                        diungkapkan 48 jam setelah proses minting selesai. Tingkat kelangkaan meliputi:
+                        Common (Umum), Rare (Langka), Epic (Epik), dan Legendary (Legendaris)!
+                    </p>
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-around text-center">
+                            <div>
+                                <div class="text-primary fw-bold fs-4">10.000</div>
+                                <small class="text-muted">Total Koleksi</small>
+                            </div>
+                            <div>
+                                <div class="text-primary fw-bold fs-4">150+</div>
+                                <small class="text-muted">Trait Unik</small>
+                            </div>
+                            <div>
+                                <div class="text-primary fw-bold fs-4">0.08 ETH</div>
+                                <small class="text-muted">Harga Mint</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mint Interface -->
+            <div class="mint-interface" data-aos="fade-left" data-aos-delay="200">
+
+                <!-- Wallet Connection -->
+                <div class="wallet-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-wallet me-2"></i> 1. Hubungkan Wallet
+                    </h3>
+                    <button class="wallet-btn" id="connectWalletBtn" onclick="connectWallet()">
+                        <span>
+                            <i class="fab fa-ethereum me-2"></i>
+                            <span id="walletStatus">Hubungkan MetaMask</span>
+                        </span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Mint Controls -->
+                <div class="mint-controls">
+                    <h3 class="section-title">
+                        <i class="fas fa-sliders-h me-2"></i> 2. Pilih Jumlah
+                    </h3>
+
+                    <div class="quantity-selector">
+                        <button class="qty-btn" onclick="decreaseQty()" id="decreaseBtn">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="qty-display" id="quantity">1</div>
+                        <button class="qty-btn" onclick="increaseQty()" id="increaseBtn">
+                            <i class="fas fa-plus"></i>
                         </button>
                     </div>
-                    
-                    <!-- Mint Controls -->
-                    <div class="mint-controls">
-                        <h3 class="section-title">
-                            <i class="fas fa-sliders-h me-2"></i> 2. Pilih Jumlah
-                        </h3>
-                        
-                        <div class="quantity-selector">
-                            <button class="qty-btn" onclick="decreaseQty()" id="decreaseBtn">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <div class="qty-display" id="quantity">1</div>
-                            <button class="qty-btn" onclick="increaseQty()" id="increaseBtn">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="text-center mb-3">
-                            <small class="text-muted">Maksimal 10 NFT per transaksi</small>
-                        </div>
-                        
-                        <div class="price-info">
-                            <div class="price-row">
-                                <span class="price-label">Harga per NFT:</span>
-                                <span class="price-value">0.08 ETH</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-label">Jumlah:</span>
-                                <span class="price-value" id="qtyDisplay">1</span>
-                            </div>
-                            <div class="price-row">
-                                <span class="price-label">Total Harga:</span>
-                                <span class="price-value">
-                                    <i class="fab fa-ethereum me-1"></i>
-                                    <span id="totalPrice">0.08</span> ETH
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Mint Button -->
-                    <button class="mint-btn" id="mintBtn" onclick="mintNFT()" disabled>
-                        <i class="fas fa-lock"></i> Hubungkan Wallet Terlebih Dahulu
-                    </button>
-                    
-                    <!-- FAQ Mini -->
-                    <div class="faq-section">
-                        <h3 class="section-title">
-                            <i class="fas fa-question-circle me-2"></i> FAQ Singkat
-                        </h3>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <i class="fas fa-chevron-right me-2"></i>
-                                Berapa harga mint?
-                            </div>
-                            <div class="faq-answer">
-                                0.08 ETH per NFT. Maksimal 10 NFT per transaksi.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <i class="fas fa-chevron-right me-2"></i>
-                                Kapan reveal-nya?
-                            </div>
-                            <div class="faq-answer">
-                                NFT Anda akan diungkapkan 48 jam setelah mint selesai atau ketika semua 10.000 terjual habis.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <i class="fas fa-chevron-right me-2"></i>
-                                Wallet apa yang didukung?
-                            </div>
-                            <div class="faq-answer">
-                                MetaMask, WalletConnect, Coinbase Wallet, dan Phantom semuanya didukung.
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-            </div>
-            
-        </div>
-    </section>
 
-    <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="success-animation">
-                        <div class="success-icon">
-                            <i class="fas fa-check-circle"></i>
+                    <div class="text-center mb-3">
+                        <small class="text-muted">Maksimal 10 NFT per transaksi</small>
+                    </div>
+
+                    <div class="price-info">
+                        <div class="price-row">
+                            <span class="price-label">Harga per NFT:</span>
+                            <span class="price-value">0.08 ETH</span>
                         </div>
-                        <h3 class="mt-3 mb-2">Selamat!</h3>
-                        <p class="text-muted mb-4">NFT Anda berhasil di-mint!</p>
-                        <p>Token ID: <strong class="text-primary">#<span id="tokenId">0000</span></strong></p>
-                        <hr>
-                        <div class="d-grid gap-2 mt-4">
-                            <a href="gallery.php" class="btn btn-primary">
-                                <i class="fas fa-images me-2"></i> Lihat di Galeri
-                            </a>
-                            <button class="btn btn-outline-light" data-bs-dismiss="modal">
-                                Tutup
-                            </button>
+                        <div class="price-row">
+                            <span class="price-label">Jumlah:</span>
+                            <span class="price-value" id="qtyDisplay">1</span>
                         </div>
+                        <div class="price-row">
+                            <span class="price-label">Total Harga:</span>
+                            <span class="price-value">
+                                <i class="fab fa-ethereum me-1"></i>
+                                <span id="totalPrice">0.08</span> ETH
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mint Button -->
+                <button class="mint-btn" id="mintBtn" onclick="mintNFT()" disabled>
+                    <i class="fas fa-lock"></i> Hubungkan Wallet Terlebih Dahulu
+                </button>
+
+                <!-- FAQ Mini -->
+                <div class="faq-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-question-circle me-2"></i> FAQ Singkat
+                    </h3>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right me-2"></i>
+                            Berapa harga mint?
+                        </div>
+                        <div class="faq-answer">
+                            0.08 ETH per NFT. Maksimal 10 NFT per transaksi.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right me-2"></i>
+                            Kapan reveal-nya?
+                        </div>
+                        <div class="faq-answer">
+                            NFT Anda akan diungkapkan 48 jam setelah mint selesai atau ketika semua 10.000 terjual
+                            habis.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right me-2"></i>
+                            Wallet apa yang didukung?
+                        </div>
+                        <div class="faq-answer">
+                            MetaMask, WalletConnect, Coinbase Wallet, dan Phantom semuanya didukung.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="success-animation">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="mt-3 mb-2">Selamat!</h3>
+                    <p class="text-muted mb-4">NFT Anda berhasil di-mint!</p>
+                    <p>Token ID: <strong class="text-primary">#<span id="tokenId">0000</span></strong></p>
+                    <hr>
+                    <div class="d-grid gap-2 mt-4">
+                        <a href="gallery.php" class="btn btn-primary">
+                            <i class="fas fa-images me-2"></i> Lihat di Galeri
+                        </a>
+                        <button class="btn btn-outline-light" data-bs-dismiss="modal">
+                            Tutup
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="footer py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h5 class="footer-title">
-                        <i class="fas fa-gem me-2"></i> NFT-VERSE
-                    </h5>
-                    <p class="footer-text">Membangun masa depan kepemilikan digital.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="footer-subtitle">Link Cepat</h6>
-                    <ul class="footer-links">
-                        <li><a href="../index.php">Beranda</a></li>
-                        <li><a href="roadmap.php">Peta Jalan</a></li>
-                        <li><a href="gallery.php">Galeri</a></li>
-                        <li><a href="team.php">Tim</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <h6 class="footer-subtitle">Newsletter</h6>
-                    <form class="newsletter-form">
-                        <input type="email" class="form-control" placeholder="Email Anda">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <hr class="footer-divider">
-            
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="copyright">&copy; 2024 NFT-Verse. Hak cipta dilindungi.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="footer-legal">Kebijakan Privasi</a>
-                    <span class="mx-2">|</span>
-                    <a href="#" class="footer-legal">Syarat & Ketentuan</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<?php
+$extra_js = '<script>
+    // Mint Configuration
+    const MINT_PRICE = 0.08;
+    const MAX_QUANTITY = 10;
+    let currentQty = 1;
+    let walletConnected = false;
     
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
-    
-    <script>
-        // Mint Configuration
-        const MINT_PRICE = 0.08;
-        const MAX_QUANTITY = 10;
-        let currentQty = 1;
-        let walletConnected = false;
+    // Connect Wallet Function
+    function connectWallet() {
+        const btn = document.getElementById(\'connectWalletBtn\');
+        const mintBtn = document.getElementById(\'mintBtn\');
         
-        // Connect Wallet Function
-        function connectWallet() {
-            const btn = document.getElementById('connectWalletBtn');
-            const mintBtn = document.getElementById('mintBtn');
-            
-            // Simulate wallet connection
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Menghubungkan...';
-            
-            setTimeout(() => {
-                walletConnected = true;
-                btn.classList.add('wallet-connected');
-                btn.innerHTML = `
-                    <span>
-                        <i class="fas fa-check-circle me-2"></i>
-                        <span class="wallet-address">0x742d...a3f9</span>
-                    </span>
-                    <i class="fas fa-power-off"></i>
-                `;
-                
-                mintBtn.disabled = false;
-                mintBtn.innerHTML = '<i class="fas fa-fire me-2"></i> Mint Sekarang';
-                
-                // Change onclick to disconnect
-                btn.setAttribute('onclick', 'disconnectWallet()');
-            }, 1500);
-        }
+        // Simulate wallet connection
+        btn.innerHTML = \'<i class="fas fa-spinner fa-spin me-2"></i> Menghubungkan...\';
         
-        // Disconnect Wallet
-        function disconnectWallet() {
-            walletConnected = false;
-            const btn = document.getElementById('connectWalletBtn');
-            const mintBtn = document.getElementById('mintBtn');
-            
-            btn.classList.remove('wallet-connected');
+        setTimeout(() => {
+            walletConnected = true;
+            btn.classList.add(\'wallet-connected\');
             btn.innerHTML = `
                 <span>
-                    <i class="fab fa-ethereum me-2"></i>
-                    Hubungkan MetaMask
+                    <i class="fas fa-check-circle me-2"></i>
+                    <span class="wallet-address">0x742d...a3f9</span>
                 </span>
-                <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-power-off"></i>
             `;
-            btn.setAttribute('onclick', 'connectWallet()');
             
-            mintBtn.disabled = true;
-            mintBtn.innerHTML = '<i class="fas fa-lock"></i> Hubungkan Wallet Terlebih Dahulu';
-        }
-        
-        // Quantity Functions
-        function increaseQty() {
-            if(currentQty < MAX_QUANTITY) {
-                currentQty++;
-                updateQuantity();
-            }
-        }
-        
-        function decreaseQty() {
-            if(currentQty > 1) {
-                currentQty--;
-                updateQuantity();
-            }
-        }
-        
-        function updateQuantity() {
-            document.getElementById('quantity').textContent = currentQty;
-            document.getElementById('qtyDisplay').textContent = currentQty;
+            mintBtn.disabled = false;
+            mintBtn.innerHTML = \'<i class="fas fa-fire me-2"></i> Mint Sekarang\';
             
-            const total = (MINT_PRICE * currentQty).toFixed(2);
-            document.getElementById('totalPrice').textContent = total;
-            
-            // Update buttons
-            document.getElementById('decreaseBtn').disabled = currentQty <= 1;
-            document.getElementById('increaseBtn').disabled = currentQty >= MAX_QUANTITY;
-        }
-        
-        // Mint Function
-        function mintNFT() {
-            if(!walletConnected) {
-                alert('Silakan hubungkan wallet Anda terlebih dahulu!');
-                return;
-            }
-            
-            const mintBtn = document.getElementById('mintBtn');
-            mintBtn.disabled = true;
-            mintBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Minting...';
-            
-            // Simulate minting process
-            setTimeout(() => {
-                // Generate random token ID
-                const tokenId = Math.floor(Math.random() * 10000);
-                document.getElementById('tokenId').textContent = String(tokenId).padStart(4, '0');
-                
-                // Show success modal
-                const modal = new bootstrap.Modal(document.getElementById('successModal'));
-                modal.show();
-                
-                // Reset button
-                mintBtn.disabled = false;
-                mintBtn.innerHTML = '<i class="fas fa-fire me-2"></i> Mint Sekarang';
-                
-                // Update minted count
-                const currentMinted = parseInt(document.getElementById('mintedCount').textContent.replace('.', ''));
-                const newMinted = currentMinted + currentQty;
-                document.getElementById('mintedCount').textContent = newMinted.toLocaleString('id-ID');
-                
-                const progress = (newMinted / 10000) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-            }, 3000);
-        }
-        
-        // Random preview image rotation
-        const previewImages = [1, 2, 3, 4];
-        let currentImageIndex = 0;
-        
-        setInterval(() => {
-            currentImageIndex = (currentImageIndex + 1) % previewImages.length;
-            const imgSrc = `../assets/images/nft-${previewImages[currentImageIndex]}.png`;
-            document.getElementById('previewImage').src = imgSrc;
-        }, 5000);
-    </script>
+            // Change onclick to disconnect
+            btn.setAttribute(\'onclick\', \'disconnectWallet()\');
+        }, 1500);
+    }
     
+    // Disconnect Wallet
+    function disconnectWallet() {
+        walletConnected = false;
+        const btn = document.getElementById(\'connectWalletBtn\');
+        const mintBtn = document.getElementById(\'mintBtn\');
+        
+        btn.classList.remove(\'wallet-connected\');
+        btn.innerHTML = `
+            <span>
+                <i class="fab fa-ethereum me-2"></i>
+                Hubungkan MetaMask
+            </span>
+            <i class="fas fa-chevron-right"></i>
+        `;
+        btn.setAttribute(\'onclick\', \'connectWallet()\');
+        
+        mintBtn.disabled = true;
+        mintBtn.innerHTML = \'<i class="fas fa-lock"></i> Hubungkan Wallet Terlebih Dahulu\';
+    }
+    
+    // Quantity Functions
+    function increaseQty() {
+        if(currentQty < MAX_QUANTITY) {
+            currentQty++;
+            updateQuantity();
+        }
+    }
+    
+    function decreaseQty() {
+        if(currentQty > 1) {
+            currentQty--;
+            updateQuantity();
+        }
+    }
+    
+    function updateQuantity() {
+        document.getElementById(\'quantity\').textContent = currentQty;
+        document.getElementById(\'qtyDisplay\').textContent = currentQty;
+        
+        const total = (MINT_PRICE * currentQty).toFixed(2);
+        document.getElementById(\'totalPrice\').textContent = total;
+        
+        // Update buttons
+        document.getElementById(\'decreaseBtn\').disabled = currentQty <= 1;
+        document.getElementById(\'increaseBtn\').disabled = currentQty >= MAX_QUANTITY;
+    }
+    
+    // Mint Function
+    function mintNFT() {
+        if(!walletConnected) {
+            alert(\'Silakan hubungkan wallet Anda terlebih dahulu!\');
+            return;
+        }
+        
+        const mintBtn = document.getElementById(\'mintBtn\');
+        mintBtn.disabled = true;
+        mintBtn.innerHTML = \'<i class="fas fa-spinner fa-spin me-2"></i> Minting...\';
+        
+        // Simulate minting process
+        setTimeout(() => {
+            // Generate random token ID
+            const tokenId = Math.floor(Math.random() * 10000);
+            document.getElementById(\'tokenId\').textContent = String(tokenId).padStart(4, \'0\');
+            
+            // Show success modal
+            const modal = new bootstrap.Modal(document.getElementById(\'successModal\'));
+            modal.show();
+            
+            // Reset button
+            mintBtn.disabled = false;
+            mintBtn.innerHTML = \'<i class="fas fa-fire me-2"></i> Mint Sekarang\';
+        }, 3000);
+    }
+</script>';
+include '../includes/footer.php';
+?>
+mintBtn.innerHTML = '<i class="fas fa-fire me-2"></i> Mint Sekarang';
+
+// Update minted count
+const currentMinted = parseInt(document.getElementById('mintedCount').textContent.replace('.', ''));
+const newMinted = currentMinted + currentQty;
+document.getElementById('mintedCount').textContent = newMinted.toLocaleString('id-ID');
+
+const progress = (newMinted / 10000) * 100;
+document.getElementById('progressBar').style.width = progress + '%';
+}, 3000);
+}
+
+// Random preview image rotation
+const previewImages = [1, 2, 3, 4];
+let currentImageIndex = 0;
+
+setInterval(() => {
+currentImageIndex = (currentImageIndex + 1) % previewImages.length;
+const imgSrc = `../assets/images/nft-${previewImages[currentImageIndex]}.png`;
+document.getElementById('previewImage').src = imgSrc;
+}, 5000);
+</script>
+
 </body>
+
 </html>

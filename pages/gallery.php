@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - CryptoVerse NFT</title>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    
-    <style>
+<?php
+$path = '../';
+$page_title = 'Gallery - CryptoVerse NFT';
+$active_tab = 'gallery';
+$extra_css = '    <style>
         /* Gallery Specific Styles */
         .gallery-page {
             min-height: 100vh;
@@ -285,134 +267,95 @@
                 justify-content: center;
             }
         }
-    </style>
-</head>
-<body>
-    
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
-    
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="../index.php">
-                <i class="fas fa-gem me-2"></i>
-                <span class="brand-text">NFT-VERSE</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="roadmap.php">Agenda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="gallery.php">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="team.php">Tim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-mint" href="mint.php">
-                            <i class="fas fa-fire me-1"></i> Mint Sekarang
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    </style>';
+include '../includes/header.php';
+?>
 
-    <!-- Gallery Page -->
-    <section class="gallery-page">
-        <div class="container">
-            
-            <!-- Header -->
-            <div class="page-header" data-aos="fade-up">
-                <h1 class="gradient-text">Galeri NFT</h1>
-                <p class="section-subtitle">Eksplorasi 10.000 aset unik yang hanya tersedia di sini.</p>
-            </div>
-            
-            <!-- Search Box -->
-            <div class="search-box" data-aos="fade-up" data-aos-delay="100">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search by Token ID or Name...">
-                <i class="fas fa-search search-icon"></i>
-            </div>
-            
-            <!-- Filters -->
-            <div class="filter-section" data-aos="fade-up" data-aos-delay="200">
-                <div class="row">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <div class="filter-title">Filter by Rarity:</div>
-                        <div class="filter-buttons" id="rarityFilters">
-                            <button class="filter-btn active" data-filter="all">All</button>
-                            <button class="filter-btn" data-filter="legendary">Legendary</button>
-                            <button class="filter-btn" data-filter="epic">Epic</button>
-                            <button class="filter-btn" data-filter="rare">Rare</button>
-                            <button class="filter-btn" data-filter="common">Common</button>
-                        </div>
+<!-- Gallery Page -->
+<section class="gallery-page">
+    <div class="container">
+
+        <!-- Header -->
+        <div class="page-header" data-aos="fade-up">
+            <h1 class="gradient-text">Galeri NFT</h1>
+            <p class="section-subtitle">Eksplorasi 10.000 aset unik yang hanya tersedia di sini.</p>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-box" data-aos="fade-up" data-aos-delay="100">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search by Token ID or Name...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-section" data-aos="fade-up" data-aos-delay="200">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="filter-title">Filter by Rarity:</div>
+                    <div class="filter-buttons" id="rarityFilters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="legendary">Legendary</button>
+                        <button class="filter-btn" data-filter="epic">Epic</button>
+                        <button class="filter-btn" data-filter="rare">Rare</button>
+                        <button class="filter-btn" data-filter="common">Common</button>
                     </div>
-                    <div class="col-md-6">
-                        <div class="filter-title">Filter by Trait:</div>
-                        <div class="filter-buttons" id="traitFilters">
-                            <button class="filter-btn active" data-filter="all">All</button>
-                            <button class="filter-btn" data-filter="cyber">Cyber</button>
-                            <button class="filter-btn" data-filter="neon">Neon</button>
-                            <button class="filter-btn" data-filter="holographic">Holographic</button>
-                        </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="filter-title">Filter by Trait:</div>
+                    <div class="filter-buttons" id="traitFilters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="cyber">Cyber</button>
+                        <button class="filter-btn" data-filter="neon">Neon</button>
+                        <button class="filter-btn" data-filter="holographic">Holographic</button>
                     </div>
                 </div>
             </div>
-            
-            <!-- NFT Grid -->
-            <div class="nft-grid" id="nftGrid">
-                <?php
-                // Generate sample NFT data
-                $nfts = [];
-                $rarities = ['legendary', 'epic', 'rare', 'common'];
-                $traits = ['cyber', 'neon', 'holographic'];
-                $prefixes = ['Cyber', 'Neon', 'Digital', 'Quantum', 'Cosmic', 'Virtual'];
-                $suffixes = ['Warrior', 'Guardian', 'Phoenix', 'Dragon', 'Knight', 'Samurai'];
-                
-                for($i = 1; $i <= 24; $i++) {
-                    $rarity = $rarities[array_rand($rarities)];
-                    $trait = $traits[array_rand($traits)];
-                    $prefix = $prefixes[array_rand($prefixes)];
-                    $suffix = $suffixes[array_rand($suffixes)];
-                    
-                    $nfts[] = [
-                        'id' => str_pad($i, 4, '0', STR_PAD_LEFT),
-                        'name' => "$prefix $suffix",
-                        'rarity' => $rarity,
-                        'trait' => $trait,
-                        'score' => rand(50, 999) / 10,
-                        'price' => number_format(rand(5, 50) / 10, 2)
-                    ];
-                }
-                
-                foreach($nfts as $nft):
+        </div>
+
+        <!-- NFT Grid -->
+        <div class="nft-grid" id="nftGrid">
+            <?php
+            // Generate sample NFT data
+            $nfts = [];
+            $rarities = ['legendary', 'epic', 'rare', 'common'];
+            $traits = ['cyber', 'neon', 'holographic'];
+            $prefixes = ['Cyber', 'Neon', 'Digital', 'Quantum', 'Cosmic', 'Virtual'];
+            $suffixes = ['Warrior', 'Guardian', 'Phoenix', 'Dragon', 'Knight', 'Samurai'];
+
+            for ($i = 1; $i <= 24; $i++) {
+                $rarity = $rarities[array_rand($rarities)];
+                $trait = $traits[array_rand($traits)];
+                $prefix = $prefixes[array_rand($prefixes)];
+                $suffix = $suffixes[array_rand($suffixes)];
+
+                $nfts[] = [
+                    'id' => str_pad($i, 4, '0', STR_PAD_LEFT),
+                    'name' => "$prefix $suffix",
+                    'rarity' => $rarity,
+                    'trait' => $trait,
+                    'score' => rand(50, 999) / 10,
+                    'price' => number_format(rand(5, 50) / 10, 2)
+                ];
+            }
+
+            foreach ($nfts as $nft):
                 ?>
-                <div class="gallery-nft-card" 
-                     data-aos="zoom-in" 
-                     data-rarity="<?php echo $nft['rarity']; ?>"
-                     data-trait="<?php echo $nft['trait']; ?>"
-                     data-name="<?php echo strtolower($nft['name']); ?>"
-                     data-id="<?php echo $nft['id']; ?>">
-                    
+                <div class="gallery-nft-card" data-aos="zoom-in" data-rarity="<?php echo $nft['rarity']; ?>"
+                    data-trait="<?php echo $nft['trait']; ?>" data-name="<?php echo strtolower($nft['name']); ?>"
+                    data-id="<?php echo $nft['id']; ?>">
+
                     <div class="gallery-nft-image">
-                        <img src="../assets/images/nft-<?php echo ($nft['id'] % 15) + 1; ?>.png" alt="<?php echo $nft['name']; ?>">
+                        <img src="../assets/images/nft-<?php echo ($nft['id'] % 15) + 1; ?>.png"
+                            alt="<?php echo $nft['name']; ?>">
                         <div class="nft-id">#<?php echo $nft['id']; ?></div>
                         <span class="rarity-badge rarity-<?php echo $nft['rarity']; ?>">
                             <?php echo ucfirst($nft['rarity']); ?>
                         </span>
                     </div>
-                    
+
                     <div class="gallery-nft-info">
                         <h5 class="nft-name"><?php echo $nft['name']; ?></h5>
-                        
+
                         <div class="nft-traits">
                             <span class="trait-tag">
                                 <i class="fas fa-cube me-1"></i> <?php echo ucfirst($nft['trait']); ?>
@@ -421,7 +364,7 @@
                                 <i class="fas fa-star me-1"></i> Score: <?php echo $nft['score']; ?>
                             </span>
                         </div>
-                        
+
                         <div class="nft-footer">
                             <div class="nft-price">
                                 <i class="fab fa-ethereum me-1"></i>
@@ -433,217 +376,152 @@
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
-            </div>
-            
-            <!-- No Results Message -->
-            <div class="no-results" id="noResults" style="display: none;">
-                <i class="fas fa-search"></i>
-                <h3>No NFTs Found</h3>
-                <p class="text-muted">Try adjusting your filters or search query</p>
-            </div>
-            
-            <!-- Load More Button -->
-            <div class="text-center mt-5" data-aos="fade-up">
-                <button class="btn btn-primary btn-glow btn-lg" id="loadMoreBtn">
-                    <i class="fas fa-sync-alt me-2"></i> Load More NFTs
-                </button>
-            </div>
-            
+            <?php endforeach; ?>
         </div>
-    </section>
 
-    <!-- NFT Detail Modal -->
-    <div class="modal fade" id="nftModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        <i class="fas fa-cube me-2"></i> NFT Details
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="../assets/images/nft-<?php echo ($nft['id'] % 4) + 1; ?>.png" class="img-fluid rounded" id="modalImage">
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No NFTs Found</h3>
+            <p class="text-muted">Try adjusting your filters or search query</p>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-5" data-aos="fade-up">
+            <button class="btn btn-primary btn-glow btn-lg" id="loadMoreBtn">
+                <i class="fas fa-sync-alt me-2"></i> Load More NFTs
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- NFT Detail Modal -->
+<div class="modal fade" id="nftModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-cube me-2"></i> NFT Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="../assets/images/nft-<?php echo ($nft['id'] % 4) + 1; ?>.png"
+                            class="img-fluid rounded" id="modalImage">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 id="modalTitle">NFT Name</h3>
+                        <p class="text-muted">Token ID: <span id="modalId">#0001</span></p>
+                        <hr>
+                        <div class="mb-3">
+                            <strong>Rarity:</strong>
+                            <span id="modalRarity" class="ms-2"></span>
                         </div>
-                        <div class="col-md-6">
-                            <h3 id="modalTitle">NFT Name</h3>
-                            <p class="text-muted">Token ID: <span id="modalId">#0001</span></p>
-                            <hr>
-                            <div class="mb-3">
-                                <strong>Rarity:</strong>
-                                <span id="modalRarity" class="ms-2"></span>
-                            </div>
-                            <div class="mb-3">
-                                <strong>Rarity Score:</strong>
-                                <span id="modalScore" class="ms-2 text-primary"></span>
-                            </div>
-                            <div class="mb-3">
-                                <strong>Current Price:</strong>
-                                <span id="modalPrice" class="ms-2"></span>
-                            </div>
-                            <hr>
-                            <h5>Attributes</h5>
-                            <div id="modalTraits"></div>
-                            <hr>
-                            <div class="d-grid gap-2">
-                                <a href="#" class="btn btn-primary btn-glow">
-                                    <i class="fas fa-shopping-cart me-2"></i> Buy Now
-                                </a>
-                                <a href="#" class="btn btn-outline-light">
-                                    <i class="fas fa-external-link-alt me-2"></i> View on OpenSea
-                                </a>
-                            </div>
+                        <div class="mb-3">
+                            <strong>Rarity Score:</strong>
+                            <span id="modalScore" class="ms-2 text-primary"></span>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Current Price:</strong>
+                            <span id="modalPrice" class="ms-2"></span>
+                        </div>
+                        <hr>
+                        <h5>Attributes</h5>
+                        <div id="modalTraits"></div>
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-primary btn-glow">
+                                <i class="fas fa-shopping-cart me-2"></i> Buy Now
+                            </a>
+                            <a href="#" class="btn btn-outline-light">
+                                <i class="fas fa-external-link-alt me-2"></i> View on OpenSea
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-     <!-- Footer -->
-    <footer class="footer py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h5 class="footer-title">
-                        <i class="fas fa-gem me-2"></i> NFT-VERSE
-                    </h5>
-                    <p class="footer-text">Membangun masa depan kepemilikan digital melalui teknologi NFT inovatif.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="footer-subtitle">Link Cepat</h6>
-                    <ul class="footer-links">
-                        <li><a href="index.php">Beranda</a></li>
-                        <li><a href="roadmap.php">Peta Jalan</a></li>
-                        <li><a href="gallery.php">Galeri</a></li>
-                        <li><a href="team.php">Tim</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <h6 class="footer-subtitle">Newsletter</h6>
-                    <p class="footer-text">Berlangganan untuk update</p>
-                    <form class="newsletter-form">
-                        <input type="email" class="form-control" placeholder="Email Anda" required>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <hr class="footer-divider">
-            
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="copyright">&copy; 2025 NFT-Verse. Hak cipta dilindungi.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="footer-legal">Kebijakan Privasi</a>
-                    <span class="mx-2">|</span>
-                    <a href="#" class="footer-legal">Syarat & Ketentuan</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<?php
+$extra_js = '<script>
+    // Filter functionality
+    const filterBtns = document.querySelectorAll(\'.filter-btn\');
+    const nftCards = document.querySelectorAll(\'.gallery-nft-card\');
+    const searchInput = document.getElementById(\'searchInput\');
+    const noResults = document.getElementById(\'noResults\');
     
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    let activeRarityFilter = \'all\';
+    let activeTraitFilter = \'all\';
     
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    // Rarity Filter
+    document.getElementById(\'rarityFilters\').addEventListener(\'click\', function (e) {
+        if (e.target.classList.contains(\'filter-btn\')) {
+            this.querySelectorAll(\'.filter-btn\').forEach(btn => btn.classList.remove(\'active\'));
+            e.target.classList.add(\'active\');
+            activeRarityFilter = e.target.dataset.filter;
+            applyFilters();
+        }
+    });
     
-    <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
+    // Trait Filter
+    document.getElementById(\'traitFilters\').addEventListener(\'click\', function (e) {
+        if (e.target.classList.contains(\'filter-btn\')) {
+            this.querySelectorAll(\'.filter-btn\').forEach(btn => btn.classList.remove(\'active\'));
+            e.target.classList.add(\'active\');
+            activeTraitFilter = e.target.dataset.filter;
+            applyFilters();
+        }
+    });
     
-    <script>
-        // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const nftCards = document.querySelectorAll('.gallery-nft-card');
-        const searchInput = document.getElementById('searchInput');
-        const noResults = document.getElementById('noResults');
+    // Search functionality
+    searchInput.addEventListener(\'input\', applyFilters);
+    
+    function applyFilters() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let visibleCount = 0;
         
-        let activeRarityFilter = 'all';
-        let activeTraitFilter = 'all';
-        
-        // Rarity Filter
-        document.getElementById('rarityFilters').addEventListener('click', function(e) {
-            if(e.target.classList.contains('filter-btn')) {
-                this.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                activeRarityFilter = e.target.dataset.filter;
-                applyFilters();
+        nftCards.forEach(card => {
+            const rarity = card.dataset.rarity;
+            const trait = card.dataset.trait;
+            const name = card.dataset.name;
+            const id = card.dataset.id;
+            
+            const matchesRarity = activeRarityFilter === \'all\' || rarity === activeRarityFilter;
+            const matchesTrait = activeTraitFilter === \'all\' || trait === activeTraitFilter;
+            const matchesSearch = searchTerm === \'\' || name.includes(searchTerm) || id.includes(searchTerm);
+            
+            if (matchesRarity && matchesTrait && matchesSearch) {
+                card.style.display = \'block\';
+                visibleCount++;
+            } else {
+                card.style.display = \'none\';
             }
         });
         
-        // Trait Filter
-        document.getElementById('traitFilters').addEventListener('click', function(e) {
-            if(e.target.classList.contains('filter-btn')) {
-                this.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                activeTraitFilter = e.target.dataset.filter;
-                applyFilters();
-            }
-        });
-        
-        // Search functionality
-        searchInput.addEventListener('input', applyFilters);
-        
-        function applyFilters() {
-            const searchTerm = searchInput.value.toLowerCase();
-            let visibleCount = 0;
-            
-            nftCards.forEach(card => {
-                const rarity = card.dataset.rarity;
-                const trait = card.dataset.trait;
-                const name = card.dataset.name;
-                const id = card.dataset.id;
-                
-                const matchesRarity = activeRarityFilter === 'all' || rarity === activeRarityFilter;
-                const matchesTrait = activeTraitFilter === 'all' || trait === activeTraitFilter;
-                const matchesSearch = searchTerm === '' || name.includes(searchTerm) || id.includes(searchTerm);
-                
-                if(matchesRarity && matchesTrait && matchesSearch) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-        
-        // View Details Modal
-        function viewDetails(tokenId) {
-            const modal = new bootstrap.Modal(document.getElementById('nftModal'));
-            document.getElementById('modalId').textContent = '#' + tokenId;
-            modal.show();
-        }
-        
-        // Load More Button
-        document.getElementById('loadMoreBtn').addEventListener('click', function() {
-            this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Loading...';
-            
-            setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-check me-2"></i> All NFTs Loaded';
-                this.disabled = true;
-            }, 1500);
-        });
-    </script>
+        noResults.style.display = visibleCount === 0 ? \'block\' : \'none\';
+    }
     
-</body>
-</html>
+    // View Details Modal
+    function viewDetails(tokenId) {
+        const modal = new bootstrap.Modal(document.getElementById(\'nftModal\'));
+        document.getElementById(\'modalId\').textContent = \'#\' + tokenId;
+        modal.show();
+    }
+    
+    // Load More Button
+    document.getElementById(\'loadMoreBtn\').addEventListener(\'click\', function () {
+        this.innerHTML = \'<i class="fas fa-spinner fa-spin me-2"></i> Loading...\';
+        
+        setTimeout(() => {
+            this.innerHTML = \'<i class="fas fa-check me-2"></i> All NFTs Loaded\';
+            this.disabled = true;
+        }, 1500);
+    });
+</script>';
+include '../includes/footer.php';
+?>

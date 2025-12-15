@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoadMap - NFT-VERSE</title>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    
-    <style>
+<?php
+$path = '../';
+$page_title = 'RoadMap - NFT-VERSE';
+$active_tab = 'roadmap';
+$extra_css = '    <style>
         /* Roadmap Specific Styles */
         .roadmap-page {
             min-height: 100vh;
@@ -43,7 +28,7 @@
         
         /* Vertical Line */
         .roadmap-container::before {
-            content: '';
+            content: \'\';
             position: absolute;
             left: 50%;
             top: 0;
@@ -232,125 +217,88 @@
                 font-size: 1.3rem;
             }
         }
-    </style>
-</head>
-<body>
-    
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
-    
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="../index.php">
-                <i class="fas fa-gem me-2"></i>
-                <span class="brand-text">NFT-VERSE</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.php">Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="roadmap.php">Agenda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="gallery.php">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="team.php">Tim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-mint" href="mint.php">
-                            <i class="fas fa-fire me-1"></i> Mint Sekarang
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    </style>';
+include '../includes/header.php';
+?>
 
-    <!-- Roadmap Page -->
-    <section class="roadmap-page">
-        <div class="container">
-            <!-- Header -->
-            <div class="roadmap-header" data-aos="fade-up">
-                <h1 class="gradient-text">Perjalanan Kami</h1>
-                <p class="section-subtitle">Peta jalan transparan menuju masa depan bersama</p>
-            </div>
-            
-            <!-- Roadmap Timeline -->
-            <div class="roadmap-container">
-                
-                <?php
-                // Roadmap Data
-                $roadmap = [
-                    [
-                        'phase' => 'Q1 2024',
-                        'title' => 'Genesis - Peluncuran & Komunitas',
-                        'status' => 'completed',
-                        'status_text' => 'Selesai',
-                        'milestones' => [
-                            '10.000 NFT Terjual Habis dalam 48 Jam',
-                            'Komunitas Discord Mencapai 15.000 Anggota',
-                            'Pengungkapan Lengkap Semua Trait Koleksi',
-                            'Donasi $50.000 untuk Mitra Amal',
-                            'Kemitraan dengan Marketplace NFT Utama'
-                        ]
-                    ],
-                    [
-                        'phase' => 'Q2 2024',
-                        'title' => 'Evolusi - Peluncuran Utilitas',
-                        'status' => 'progress',
-                        'status_text' => 'Dalam Proses',
-                        'milestones' => [
-                            'Peluncuran Platform Staking (Live)',
-                            'Pembukaan Toko Merchandise Eksklusif',
-                            'Mekanisme Breeding Generasi Pertama',
-                            'Acara Komunitas & AMA Pemegang NFT',
-                            'Rilis Beta Aplikasi Mobile'
-                        ]
-                    ],
-                    [
-                        'phase' => 'Q3 2024',
-                        'title' => 'Ekspansi - Integrasi Metaverse',
-                        'status' => 'upcoming',
-                        'status_text' => 'Segera Hadir',
-                        'milestones' => [
-                            'Airdrop Token $CRYPTO untuk Semua Pemegang',
-                            'Peluncuran Beta Game Play-to-Earn',
-                            'Penjualan Tanah Virtual di Dunia NFT-Verse',
-                            'Kolaborasi dengan Selebriti & Brand',
-                            'Koleksi NFT Generasi Kedua'
-                        ]
-                    ],
-                    [
-                        'phase' => 'Q4 2024',
-                        'title' => 'Revolusi - DAO & Masa Depan',
-                        'status' => 'upcoming',
-                        'status_text' => 'Masa Depan',
-                        'milestones' => [
-                            'Implementasi Tata Kelola DAO Penuh',
-                            'Grand Opening Metaverse NFT-Verse',
-                            'Pengembangan Bridge Cross-Chain',
-                            'Acara Fisik & Konferensi Pemegang',
-                            'Pengumuman Kemitraan Strategis'
-                        ]
+<!-- Roadmap Page -->
+<section class="roadmap-page">
+    <div class="container">
+        <!-- Header -->
+        <div class="roadmap-header" data-aos="fade-up">
+            <h1 class="gradient-text">Perjalanan Kami</h1>
+            <p class="section-subtitle">Peta jalan transparan menuju masa depan bersama</p>
+        </div>
+
+        <!-- Roadmap Timeline -->
+        <div class="roadmap-container">
+
+            <?php
+            // Roadmap Data
+            $roadmap = [
+                [
+                    'phase' => 'Q1 2024',
+                    'title' => 'Genesis - Peluncuran & Komunitas',
+                    'status' => 'completed',
+                    'status_text' => 'Selesai',
+                    'milestones' => [
+                        '10.000 NFT Terjual Habis dalam 48 Jam',
+                        'Komunitas Discord Mencapai 15.000 Anggota',
+                        'Pengungkapan Lengkap Semua Trait Koleksi',
+                        'Donasi $50.000 untuk Mitra Amal',
+                        'Kemitraan dengan Marketplace NFT Utama'
                     ]
-                ];
-                
-                foreach($roadmap as $index => $phase):
+                ],
+                [
+                    'phase' => 'Q2 2024',
+                    'title' => 'Evolusi - Peluncuran Utilitas',
+                    'status' => 'progress',
+                    'status_text' => 'Dalam Proses',
+                    'milestones' => [
+                        'Peluncuran Platform Staking (Live)',
+                        'Pembukaan Toko Merchandise Eksklusif',
+                        'Mekanisme Breeding Generasi Pertama',
+                        'Acara Komunitas & AMA Pemegang NFT',
+                        'Rilis Beta Aplikasi Mobile'
+                    ]
+                ],
+                [
+                    'phase' => 'Q3 2024',
+                    'title' => 'Ekspansi - Integrasi Metaverse',
+                    'status' => 'upcoming',
+                    'status_text' => 'Segera Hadir',
+                    'milestones' => [
+                        'Airdrop Token $CRYPTO untuk Semua Pemegang',
+                        'Peluncuran Beta Game Play-to-Earn',
+                        'Penjualan Tanah Virtual di Dunia NFT-Verse',
+                        'Kolaborasi dengan Selebriti & Brand',
+                        'Koleksi NFT Generasi Kedua'
+                    ]
+                ],
+                [
+                    'phase' => 'Q4 2024',
+                    'title' => 'Revolusi - DAO & Masa Depan',
+                    'status' => 'upcoming',
+                    'status_text' => 'Masa Depan',
+                    'milestones' => [
+                        'Implementasi Tata Kelola DAO Penuh',
+                        'Grand Opening Metaverse NFT-Verse',
+                        'Pengembangan Bridge Cross-Chain',
+                        'Acara Fisik & Konferensi Pemegang',
+                        'Pengumuman Kemitraan Strategis'
+                    ]
+                ]
+            ];
+
+            foreach ($roadmap as $index => $phase):
                 ?>
-                
+
                 <div class="roadmap-phase">
                     <!-- Phase Number -->
                     <div class="phase-number">
                         <?php echo $index + 1; ?>
                     </div>
-                    
+
                     <!-- Phase Content -->
                     <div class="phase-content">
                         <div class="phase-header">
@@ -359,9 +307,9 @@
                                 <h3 class="phase-title"><?php echo $phase['title']; ?></h3>
                             </div>
                             <span class="phase-status status-<?php echo $phase['status']; ?>">
-                                <?php if($phase['status'] == 'completed'): ?>
+                                <?php if ($phase['status'] == 'completed'): ?>
                                     <i class="fas fa-check-circle me-1"></i>
-                                <?php elseif($phase['status'] == 'progress'): ?>
+                                <?php elseif ($phase['status'] == 'progress'): ?>
                                     <i class="fas fa-spinner me-1"></i>
                                 <?php else: ?>
                                     <i class="fas fa-clock me-1"></i>
@@ -369,106 +317,38 @@
                                 <?php echo $phase['status_text']; ?>
                             </span>
                         </div>
-                        
+
                         <ul class="milestone-list">
-                            <?php foreach($phase['milestones'] as $milestone): ?>
-                            <li class="milestone-item">
-                                <div class="milestone-icon">
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="milestone-text"><?php echo $milestone; ?></span>
-                            </li>
+                            <?php foreach ($phase['milestones'] as $milestone): ?>
+                                <li class="milestone-item">
+                                    <div class="milestone-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="milestone-text"><?php echo $milestone; ?></span>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
-                
-                <?php endforeach; ?>
-                
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="text-center mt-5" data-aos="fade-up">
-                <div class="cta-box" style="max-width: 800px; margin: 0 auto;">
-                    <h3 class="mb-3">Ingin Menjadi Bagian dari Perjalanan Ini?</h3>
-                    <p class="mb-4">Bergabunglah dengan komunitas kami dan bantu membentuk masa depan NFT-Verse</p>
-                    <a href="https://discord.gg" target="_blank" class="btn btn-light btn-lg me-2 mb-2">
-                        <i class="fab fa-discord me-2"></i> Gabung Discord
-                    </a>
-                    <a href="mint.php" class="btn btn-outline-light btn-lg mb-2">
-                        <i class="fas fa-rocket me-2"></i> Mint NFT Anda
-                    </a>
-                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center mt-5" data-aos="fade-up">
+            <div class="cta-box" style="max-width: 800px; margin: 0 auto;">
+                <h3 class="mb-3">Ingin Menjadi Bagian dari Perjalanan Ini?</h3>
+                <p class="mb-4">Bergabunglah dengan komunitas kami dan bantu membentuk masa depan NFT-Verse</p>
+                <a href="https://discord.gg" target="_blank" class="btn btn-light btn-lg me-2 mb-2">
+                    <i class="fab fa-discord me-2"></i> Gabung Discord
+                </a>
+                <a href="mint.php" class="btn btn-outline-light btn-lg mb-2">
+                    <i class="fas fa-rocket me-2"></i> Mint NFT Anda
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h5 class="footer-title">
-                        <i class="fas fa-gem me-2"></i> NFT-VERSE
-                    </h5>
-                    <p class="footer-text">Membangun masa depan kepemilikan digital melalui teknologi NFT inovatif.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="footer-subtitle">Link Cepat</h6>
-                    <ul class="footer-links">
-                        <li><a href="index.php">Beranda</a></li>
-                        <li><a href="roadmap.php">Peta Jalan</a></li>
-                        <li><a href="gallery.php">Galeri</a></li>
-                        <li><a href="team.php">Tim</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-3 mb-4">
-                    <h6 class="footer-subtitle">Newsletter</h6>
-                    <p class="footer-text">Berlangganan untuk update</p>
-                    <form class="newsletter-form">
-                        <input type="email" class="form-control" placeholder="Email Anda" required>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <hr class="footer-divider">
-            
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="copyright">&copy; 2025 NFT-Verse. Hak cipta dilindungi.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="footer-legal">Kebijakan Privasi</a>
-                    <span class="mx-2">|</span>
-                    <a href="#" class="footer-legal">Syarat & Ketentuan</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
-    
-</body>
-</html>
+<?php include '../includes/footer.php'; ?>
