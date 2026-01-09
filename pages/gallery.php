@@ -315,53 +315,33 @@ include '../includes/header.php';
         <!-- NFT Grid -->
         <div class="nft-grid" id="nftGrid">
             <?php
-            // Generate sample NFT data
-            $nfts = [];
-            $rarities = ['legendary', 'epic', 'rare', 'common'];
-            $traits = ['cyber', 'neon', 'holographic'];
-            $prefixes = ['Cyber', 'Neon', 'Digital', 'Quantum', 'Cosmic', 'Virtual'];
-            $suffixes = ['Warrior', 'Guardian', 'Phoenix', 'Dragon', 'Knight', 'Samurai'];
-
-            for ($i = 1; $i <= 24; $i++) {
-                $rarity = $rarities[array_rand($rarities)];
-                $trait = $traits[array_rand($traits)];
-                $prefix = $prefixes[array_rand($prefixes)];
-                $suffix = $suffixes[array_rand($suffixes)];
-
-                $nfts[] = [
-                    'id' => str_pad($i, 4, '0', STR_PAD_LEFT),
-                    'name' => "$prefix $suffix",
-                    'rarity' => $rarity,
-                    'trait' => $trait,
-                    'score' => rand(50, 999) / 10,
-                    'price' => number_format(rand(5, 50) / 10, 2)
-                ];
-            }
+            // Get NFTs from database
+            require_once __DIR__ . '/../includes/functions.php';
+            $nfts = getNFTs([], 50, 0);
 
             foreach ($nfts as $nft):
                 ?>
-                <div class="gallery-nft-card" data-aos="zoom-in" data-rarity="<?php echo $nft['rarity']; ?>"
-                    data-trait="<?php echo $nft['trait']; ?>" data-name="<?php echo strtolower($nft['name']); ?>"
-                    data-id="<?php echo $nft['id']; ?>">
+                <div class="gallery-nft-card" data-aos="zoom-in" data-rarity="<?php echo $nft['rarity']; ?>" data-trait=""
+                    data-name="<?php echo strtolower($nft['name']); ?>" data-id="<?php echo $nft['token_id']; ?>">
 
                     <div class="gallery-nft-image">
-                        <img src="../assets/images/nft-<?php echo ($nft['id'] % 15) + 1; ?>.png"
-                            alt="<?php echo $nft['name']; ?>">
-                        <div class="nft-id">#<?php echo $nft['id']; ?></div>
+                        <img src="../<?php echo htmlspecialchars($nft['image_path']); ?>"
+                            alt="<?php echo htmlspecialchars($nft['name']); ?>">
+                        <div class="nft-id">#<?php echo htmlspecialchars($nft['token_id']); ?></div>
                         <span class="rarity-badge rarity-<?php echo $nft['rarity']; ?>">
                             <?php echo ucfirst($nft['rarity']); ?>
                         </span>
                     </div>
 
                     <div class="gallery-nft-info">
-                        <h5 class="nft-name"><?php echo $nft['name']; ?></h5>
+                        <h5 class="nft-name"><?php echo htmlspecialchars($nft['name']); ?></h5>
 
                         <div class="nft-traits">
                             <span class="trait-tag">
-                                <i class="fas fa-cube me-1"></i> <?php echo ucfirst($nft['trait']); ?>
+                                <i class="fas fa-cube me-1"></i> <?php echo ucfirst($nft['rarity']); ?>
                             </span>
                             <span class="trait-tag">
-                                <i class="fas fa-star me-1"></i> Score: <?php echo $nft['score']; ?>
+                                <i class="fas fa-star me-1"></i> Score: <?php echo $nft['rarity_score']; ?>
                             </span>
                         </div>
 
@@ -370,7 +350,8 @@ include '../includes/header.php';
                                 <i class="fab fa-ethereum me-1"></i>
                                 <span><?php echo $nft['price']; ?> ETH</span>
                             </div>
-                            <button class="btn btn-sm btn-outline-light" onclick="viewDetails('<?php echo $nft['id']; ?>')">
+                            <button class="btn btn-sm btn-outline-light"
+                                onclick="viewDetails('<?php echo $nft['token_id']; ?>')">
                                 <i class="fas fa-eye me-1"></i> View
                             </button>
                         </div>

@@ -344,90 +344,54 @@ include '../includes/header.php';
 
             <div class="team-grid">
                 <?php
-                $team = [
-                    [
-                        'name' => 'Zaelani "zaym" Mursid',
-                        'role' => 'Founder & CEO',
-                        'bio' => 'Memiliki rekam jejak lebih dari satu dekade di industri blockchain dan berhasil mengelola proyek NFT dengan penjualan mencapai $50 juta.',
-                        'twitter' => 'https://twitter.com',
-                        'linkedin' => 'https://linkedin.com',
-                        'avatar' => 'https://i.pravatar.cc/300?img=12'
-                    ],
-                    [
-                        'name' => 'Sarah "CodeQueen" Park',
-                        'role' => 'Lead Developer',
-                        'bio' => 'Full-stack blockchain developer. Former Ethereum Foundation contributor with expertise in smart contracts.',
-                        'twitter' => 'https://twitter.com',
-                        'github' => 'https://github.com',
-                        'avatar' => 'https://i.pravatar.cc/300?img=5'
-                    ],
-                    [
-                        'name' => 'Marcus "PixelMaster" Rivera',
-                        'role' => 'Art Director',
-                        'bio' => 'Award-winning digital artist. Worked with major brands and created art for Fortune 500 companies.',
-                        'twitter' => 'https://twitter.com',
-                        'instagram' => 'https://instagram.com',
-                        'avatar' => 'https://i.pravatar.cc/300?img=33'
-                    ],
-                    [
-                        'name' => 'Emily "Web3Guru" Foster',
-                        'role' => 'Community Manager',
-                        'bio' => 'Built and managed communities of 100k+ members. Expert in engagement and growth strategies.',
-                        'twitter' => 'https://twitter.com',
-                        'discord' => 'https://discord.gg',
-                        'avatar' => 'https://i.pravatar.cc/300?img=9'
-                    ],
-                    [
-                        'name' => 'David "MarketingNinja" Lee',
-                        'role' => 'Marketing Lead',
-                        'bio' => 'Growth hacker with proven track record. Generated $10M+ revenue across multiple Web3 projects.',
-                        'twitter' => 'https://twitter.com',
-                        'linkedin' => 'https://linkedin.com',
-                        'avatar' => 'https://i.pravatar.cc/300?img=15'
-                    ],
-                    [
-                        'name' => 'Rachel "SmartContract" Kim',
-                        'role' => 'Blockchain Architect',
-                        'bio' => 'Security researcher and auditor. Audited 50+ smart contracts with zero security breaches.',
-                        'twitter' => 'https://twitter.com',
-                        'github' => 'https://github.com',
-                        'avatar' => 'https://i.pravatar.cc/300?img=16'
-                    ]
-                ];
+                // Get team from database
+                require_once __DIR__ . '/../includes/functions.php';
+                $team = getTeamMembers(true);
 
                 foreach ($team as $index => $member):
                     $delay = ($index + 1) * 100;
                     ?>
                     <div class="team-card" data-aos="fade-up" data-aos-delay="<?php echo $delay; ?>">
                         <div class="team-avatar">
-                            <img src="<?php echo $member['avatar']; ?>" alt="<?php echo $member['name']; ?>">
+                            <img src="<?php echo htmlspecialchars($member['avatar_url'] ?: 'https://i.pravatar.cc/300'); ?>"
+                                alt="<?php echo htmlspecialchars($member['name']); ?>">
                         </div>
-                        <h4 class="team-name"><?php echo $member['name']; ?></h4>
-                        <div class="team-role"><?php echo $member['role']; ?></div>
-                        <p class="team-bio"><?php echo $member['bio']; ?></p>
+                        <h4 class="team-name"><?php echo htmlspecialchars($member['name']); ?>
+                            <?php if (!empty($member['nickname'])): ?> <small>"
+                                    <?php echo htmlspecialchars($member['nickname']); ?>"
+                                </small>
+                            <?php endif; ?>
+                        </h4>
+                        <div class="team-role"><?php echo htmlspecialchars($member['role']); ?></div>
+                        <p class="team-bio"><?php echo htmlspecialchars($member['bio']); ?></p>
                         <div class="team-socials">
-                            <?php if (isset($member['twitter'])): ?>
-                                <a href="<?php echo $member['twitter']; ?>" class="social-btn" target="_blank">
+                            <?php if (!empty($member['twitter_url'])): ?>
+                                <a href="<?php echo htmlspecialchars($member['twitter_url']); ?>" class="social-btn"
+                                    target="_blank">
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             <?php endif; ?>
-                            <?php if (isset($member['linkedin'])): ?>
-                                <a href="<?php echo $member['linkedin']; ?>" class="social-btn" target="_blank">
+                            <?php if (!empty($member['linkedin_url'])): ?>
+                                <a href="<?php echo htmlspecialchars($member['linkedin_url']); ?>" class="social-btn"
+                                    target="_blank">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             <?php endif; ?>
-                            <?php if (isset($member['github'])): ?>
-                                <a href="<?php echo $member['github']; ?>" class="social-btn" target="_blank">
+                            <?php if (!empty($member['github_url'])): ?>
+                                <a href="<?php echo htmlspecialchars($member['github_url']); ?>" class="social-btn"
+                                    target="_blank">
                                     <i class="fab fa-github"></i>
                                 </a>
                             <?php endif; ?>
-                            <?php if (isset($member['instagram'])): ?>
-                                <a href="<?php echo $member['instagram']; ?>" class="social-btn" target="_blank">
+                            <?php if (!empty($member['instagram_url'])): ?>
+                                <a href="<?php echo htmlspecialchars($member['instagram_url']); ?>" class="social-btn"
+                                    target="_blank">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             <?php endif; ?>
-                            <?php if (isset($member['discord'])): ?>
-                                <a href="<?php echo $member['discord']; ?>" class="social-btn" target="_blank">
+                            <?php if (!empty($member['discord_url'])): ?>
+                                <a href="<?php echo htmlspecialchars($member['discord_url']); ?>" class="social-btn"
+                                    target="_blank">
                                     <i class="fab fa-discord"></i>
                                 </a>
                             <?php endif; ?>

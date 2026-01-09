@@ -41,7 +41,7 @@
 
         <div class="row">
             <div class="col-md-6 text-center text-md-start">
-                <p class="copyright">&copy; 2025 NFT-Verse. Hak cipta dilindungi.</p>
+                <p class="copyright">&copy; 2026 NFT-Verse. Hak cipta dilindungi.</p>
             </div>
             <div class="col-md-6 text-center text-md-end">
                 <a href="#" class="footer-legal">Kebijakan Privasi</a>

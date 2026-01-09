@@ -136,13 +136,9 @@ include 'includes/header.php';
 
         <div class="row g-4">
             <?php
-            // Sample NFT data
-            $nfts = [
-                ['id' => 1, 'name' => 'Cyber Samurai #001', 'rarity' => 'Legendary', 'price' => '2.5 ETH'],
-                ['id' => 2, 'name' => 'Neon Guardian #042', 'rarity' => 'Epic', 'price' => '1.8 ETH'],
-                ['id' => 3, 'name' => 'Digital Phoenix #123', 'rarity' => 'Rare', 'price' => '1.2 ETH'],
-                ['id' => 4, 'name' => 'Quantum Warrior #256', 'rarity' => 'Epic', 'price' => '1.9 ETH']
-            ];
+            // Get featured NFTs from database
+            require_once __DIR__ . '/includes/functions.php';
+            $nfts = getFeaturedNFTs(4);
 
             foreach ($nfts as $index => $nft):
                 $delay = ($index + 1) * 100;
@@ -150,20 +146,20 @@ include 'includes/header.php';
                 <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="<?php echo $delay; ?>">
                     <div class="nft-card">
                         <div class="nft-card-image">
-                            <img src="assets/images/nft-<?php echo $nft['id']; ?>.png" alt="<?php echo $nft['name']; ?>"
-                                class="img-fluid">
+                            <img src="<?php echo htmlspecialchars($nft['image_path']); ?>"
+                                alt="<?php echo htmlspecialchars($nft['name']); ?>" class="img-fluid">
                             <div class="nft-overlay">
                                 <a href="pages/gallery.php" class="btn btn-sm btn-light">View Details</a>
                             </div>
                             <span class="rarity-badge rarity-<?php echo strtolower($nft['rarity']); ?>">
-                                <?php echo $nft['rarity']; ?>
+                                <?php echo ucfirst($nft['rarity']); ?>
                             </span>
                         </div>
                         <div class="nft-card-body">
-                            <h5 class="nft-title"><?php echo $nft['name']; ?></h5>
+                            <h5 class="nft-title"><?php echo htmlspecialchars($nft['name']); ?></h5>
                             <div class="nft-price">
                                 <i class="fab fa-ethereum me-1"></i>
-                                <span><?php echo $nft['price']; ?></span>
+                                <span><?php echo $nft['price']; ?> ETH</span>
                             </div>
                         </div>
                     </div>

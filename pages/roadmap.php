@@ -234,61 +234,9 @@ include '../includes/header.php';
         <div class="roadmap-container">
 
             <?php
-            // Roadmap Data
-            $roadmap = [
-                [
-                    'phase' => 'Q1 2024',
-                    'title' => 'Genesis - Peluncuran & Komunitas',
-                    'status' => 'completed',
-                    'status_text' => 'Selesai',
-                    'milestones' => [
-                        '10.000 NFT Terjual Habis dalam 48 Jam',
-                        'Komunitas Discord Mencapai 15.000 Anggota',
-                        'Pengungkapan Lengkap Semua Trait Koleksi',
-                        'Donasi $50.000 untuk Mitra Amal',
-                        'Kemitraan dengan Marketplace NFT Utama'
-                    ]
-                ],
-                [
-                    'phase' => 'Q2 2024',
-                    'title' => 'Evolusi - Peluncuran Utilitas',
-                    'status' => 'progress',
-                    'status_text' => 'Dalam Proses',
-                    'milestones' => [
-                        'Peluncuran Platform Staking (Live)',
-                        'Pembukaan Toko Merchandise Eksklusif',
-                        'Mekanisme Breeding Generasi Pertama',
-                        'Acara Komunitas & AMA Pemegang NFT',
-                        'Rilis Beta Aplikasi Mobile'
-                    ]
-                ],
-                [
-                    'phase' => 'Q3 2024',
-                    'title' => 'Ekspansi - Integrasi Metaverse',
-                    'status' => 'upcoming',
-                    'status_text' => 'Segera Hadir',
-                    'milestones' => [
-                        'Airdrop Token $CRYPTO untuk Semua Pemegang',
-                        'Peluncuran Beta Game Play-to-Earn',
-                        'Penjualan Tanah Virtual di Dunia NFT-Verse',
-                        'Kolaborasi dengan Selebriti & Brand',
-                        'Koleksi NFT Generasi Kedua'
-                    ]
-                ],
-                [
-                    'phase' => 'Q4 2024',
-                    'title' => 'Revolusi - DAO & Masa Depan',
-                    'status' => 'upcoming',
-                    'status_text' => 'Masa Depan',
-                    'milestones' => [
-                        'Implementasi Tata Kelola DAO Penuh',
-                        'Grand Opening Metaverse NFT-Verse',
-                        'Pengembangan Bridge Cross-Chain',
-                        'Acara Fisik & Konferensi Pemegang',
-                        'Pengumuman Kemitraan Strategis'
-                    ]
-                ]
-            ];
+            // Get roadmap from database
+            require_once __DIR__ . '/../includes/functions.php';
+            $roadmap = getRoadmap();
 
             foreach ($roadmap as $index => $phase):
                 ?>
@@ -303,8 +251,9 @@ include '../includes/header.php';
                     <div class="phase-content">
                         <div class="phase-header">
                             <div>
-                                <div class="text-muted small mb-1"><?php echo $phase['phase']; ?></div>
-                                <h3 class="phase-title"><?php echo $phase['title']; ?></h3>
+                                <div class="text-muted small mb-1"><?php echo htmlspecialchars($phase['phase_name']); ?>
+                                </div>
+                                <h3 class="phase-title"><?php echo htmlspecialchars($phase['title']); ?></h3>
                             </div>
                             <span class="phase-status status-<?php echo $phase['status']; ?>">
                                 <?php if ($phase['status'] == 'completed'): ?>
@@ -314,7 +263,7 @@ include '../includes/header.php';
                                 <?php else: ?>
                                     <i class="fas fa-clock me-1"></i>
                                 <?php endif; ?>
-                                <?php echo $phase['status_text']; ?>
+                                <?php echo htmlspecialchars($phase['status_text']); ?>
                             </span>
                         </div>
 
@@ -324,7 +273,8 @@ include '../includes/header.php';
                                     <div class="milestone-icon">
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <span class="milestone-text"><?php echo $milestone; ?></span>
+                                    <span
+                                        class="milestone-text"><?php echo htmlspecialchars($milestone['milestone_text']); ?></span>
                                 </li>
                             <?php endforeach; ?>
                         </ul>

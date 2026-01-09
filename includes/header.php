@@ -1,4 +1,7 @@
 <?php
+// Include session handler
+require_once __DIR__ . '/session.php';
+
 // Default path if not set
 $path = isset($path) ? $path : './';
 $active_tab = isset($active_tab) ? $active_tab : '';
@@ -71,6 +74,40 @@ $active_tab = isset($active_tab) ? $active_tab : '';
                             <i class="fas fa-fire me-1"></i> Mint Sekarang !
                         </a>
                     </li>
+
+                    <!-- Auth Navigation -->
+                    <?php if (isLoggedIn()): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i>
+                                <?php echo htmlspecialchars(getCurrentUsername()); ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <?php if (isAdmin()): ?>
+                                    <li>
+                                        <a class="dropdown-item" href="<?php echo $path; ?>admin/index.php">
+                                            <i class="fas fa-cogs me-2"></i>Admin Panel
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                <?php endif; ?>
+                                <li>
+                                    <a class="dropdown-item" href="<?php echo $path; ?>auth/logout.php">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo $path; ?>auth/login.php">
+                                <i class="fas fa-sign-in-alt me-1"></i> Login
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
